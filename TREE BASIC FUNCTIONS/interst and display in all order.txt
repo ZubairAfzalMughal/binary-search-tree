@@ -1,0 +1,112 @@
+void BST::insert(int val) {
+
+	Node *mynode = new Node(val);
+	if (root == NULL) {
+		root = mynode;
+	}
+	else
+	{
+		Node *temp = root;
+		while (temp != NULL)
+		{
+			if (mynode->data > temp->data) // compare the values if greater than proceed
+			{
+				if (temp->right == NULL)
+				{
+					temp->right = mynode; // insert the value and break it
+					mynode->p = temp;
+					break;
+				}
+				else
+				{
+					temp = temp->right;
+
+				}
+
+			}
+			else  // value is less as above is greater 
+			{
+				if (temp->left == NULL)
+				{
+					temp->left = mynode;
+					mynode->p = temp;
+					break;
+				}
+				else
+				{
+					temp = temp->left;
+				}
+			}
+		}
+
+}
+
+
+void Inorder_Display(Node *temp) {
+
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+
+		Inorder_Display(temp->left);
+		cout << temp->data << " ";
+		Inorder_Display(temp->right);
+	}
+
+}
+void Postorder_Display(Node *temp) {
+
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+		Postorder_Display(temp->left);
+		Postorder_Display(temp->right);
+		cout << temp->data << " ";
+
+
+	}
+
+}
+void Preorder_Display(Node *temp) {
+
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+		cout << temp->data << " ";
+
+		Preorder_Display(temp->left);
+		Preorder_Display(temp->right);
+
+
+	}
+
+}
+void level_order()
+{
+	queue<Node *>ptr;
+	ptr.push(root);
+	while (ptr.empty() == false) // queue is full
+	{
+		Node *node = ptr.front();
+		cout << node->data << " ";
+		ptr.pop();
+		if (node->left != NULL)
+		{
+			ptr.push(node->left);
+		}
+		if (node->right != NULL)
+		{
+			ptr.push(node->right);
+		}
+	}
+
+}

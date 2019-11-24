@@ -1,0 +1,42 @@
+Note: this will display the mirror of complete binary search only
+void mirror_one(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+		mirror_one(temp->right);
+		mirror_one(temp->left);
+		if (temp->left != NULL && temp->right != NULL)
+		{
+			swap(temp->left->data, temp->right->data);
+		}
+		else
+		{
+			if (temp->left == NULL && temp->right != NULL)
+			{
+				temp->left = temp->right;
+			}
+			else
+			{
+				temp->right = temp->left;
+			}
+		}
+	}
+}
+void mirror_final()
+{
+	Node *temp = root;
+	Node *ptr = temp->right; // taking another pointer 
+
+	temp->right = NULL; // breaking the connection to right
+
+	temp->right = temp->left; // linking right to left
+
+	temp->left = ptr; // linking left to right;
+
+	swap(temp->left->data, temp->right->data);
+
+}

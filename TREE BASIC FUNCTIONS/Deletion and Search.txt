@@ -1,0 +1,106 @@
+Node* Search(int val) {
+
+	Node *find = root;
+	if (find == NULL) {
+		return 0;
+	}
+	else
+	{
+		while (find != NULL)
+		{
+			if (find->data == val)
+			{
+				return find;
+			}
+			else if (val > find->data)
+			{
+				find = find->right;
+			}
+			else
+			{
+				find = find->left;
+			}
+		}
+
+	}
+}
+void deletion(int key)
+{
+	Node *find = Search(key);// return the adress of searching node
+	if (find != NULL)
+	{
+		if (find->right == NULL && find->left == NULL)
+		{
+			if (find == root)
+			{
+				delete find;
+				find = NULL;
+			}
+			else
+			{
+				if (find->p->left == find)
+				{
+					find->p->left = NULL;
+				}
+				else
+				{
+					find->p->right = NULL;
+				}
+				delete find;
+			}
+		}
+
+		else if (find->left != NULL && find->right != NULL)
+		{
+			Node *M = large(find->left);
+			int i = M->data;
+			deletion(M->data);
+			find->data = i;
+		}
+
+		else
+		{
+			if (find->left != NULL)
+			{
+				if (find == root)
+				{
+					root = find->left;
+				}
+				else
+				{
+					if (find->p->right == find) // finding value with parent
+					{
+						find->p->right = find->left;
+					}
+					else
+					{
+						find->p->left = find->left;
+					}
+					find = NULL;
+					delete find;
+
+				}
+			}
+			else if (find->right != NULL)
+			{
+				if (find == root)
+				{
+					root = find->right;
+				}
+				else
+				{
+					if (find->p->left == find) // finding value with parent
+					{
+						find->p->left = find->right;
+					}
+					else
+					{
+						find->p->right = find->right;
+					}
+					delete find;
+					find = NULL;
+				}
+			}
+		}
+	}
+}

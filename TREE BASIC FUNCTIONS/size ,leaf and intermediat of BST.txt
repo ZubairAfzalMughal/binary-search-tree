@@ -1,0 +1,54 @@
+int size(Node *temp)
+{
+	static int count = 0;
+	if (temp == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		size(temp->left);
+		size(temp->right);
+		count += 1;
+
+	}
+	return count;
+
+}
+void leaf(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+		leaf(temp->left);
+		leaf(temp->right);
+		if (temp->right == NULL && temp->left == NULL)
+		{
+			cout << temp->data << " ";
+		}
+	}
+}
+void intermediate(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+
+		intermediate(temp->left);
+		intermediate(temp->right);
+		if (temp == root)
+		{
+			exit(0);
+		}
+		if (temp->left != NULL || temp->right != NULL)
+		{
+			cout << temp->data << " ";
+		}
+	}
+}

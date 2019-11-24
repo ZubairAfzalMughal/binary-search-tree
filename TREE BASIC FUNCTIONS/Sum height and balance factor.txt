@@ -1,0 +1,64 @@
+int sum_of_BST(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int r = sum_of_BST(temp->left);
+		int R = sum_of_BST(temp->right);
+		return r + R + temp->data;
+	}
+}
+int height(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int r = height(temp->right);
+		int l = height(temp->left);
+		int max;
+		if (r > l)
+		{
+			max = r;
+		}
+		else
+		{
+			max = l;
+		}
+		return max + 1;
+	}
+
+}
+int balance_factor(Node *temp)
+{
+	if (temp == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int r = height(temp->right);
+		int l = height(temp->left);
+		return l - r;
+	}
+}
+int balance_factor_of_desire_node(int value)
+{
+	Node *find = Search(value);
+	if (find == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int r = height(find->right);
+		int l = height(find->left);
+		return l - r;
+	}
+
+}

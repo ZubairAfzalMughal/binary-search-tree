@@ -1,0 +1,48 @@
+Node* large(Node *temp)
+{
+	if (temp->right == NULL)
+	{
+		return temp;
+		/*
+		   because right child are largest than left
+		   so we will move to right
+		*/
+
+	}
+	else
+	{
+		large(temp->right);
+	}
+}
+Node* small(Node *temp)
+{
+
+	if (temp->left == NULL)
+	{
+		return temp;
+		/*
+		   because left child are smallest
+		   so we will move to right
+		*/
+
+	}
+	else
+	{
+		small(temp->left);
+	}
+}
+void GST(Node *temp)
+{
+	static int sum = 0;
+	if (temp != NULL)
+	{
+		GSM(temp->right);
+		sum += temp->data;
+		cout << sum << " ";
+		GSM(temp->left);
+	}
+	else
+	{
+		return;
+	}
+}

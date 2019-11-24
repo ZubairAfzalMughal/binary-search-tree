@@ -1,0 +1,42 @@
+Node* Search(int val) {
+
+	Node *find = root;
+	if (find == NULL) {
+		return 0;
+	}
+	else
+	{
+		while (find != NULL)
+		{
+			if (find->data == val)
+			{
+				return find;
+			}
+			else if (val > find->data)
+			{
+				find = find->right;
+			}
+			else
+			{
+				find = find->left;
+			}
+		}
+
+	}
+}
+void Display_desire_parent(int val)
+{
+	Node *find = Search(val);
+	if (find == NULL)
+	{
+		cout << "No parent is found " << endl;
+	}
+	else if (find == root)
+	{
+		cout << "parent is " << find->data << endl;
+	}
+	else
+	{
+		cout << "parent is " << find->p->data << endl;
+	}
+}

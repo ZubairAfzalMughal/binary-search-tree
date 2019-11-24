@@ -1,0 +1,58 @@
+Note: make a array of you desrie size and a variable of cap(capacity) which will give the capacity of array
+
+void Preorder_Display(Node *temp) {
+
+	if (temp == NULL)
+	{
+		return;
+	}
+	else
+	{
+		cout << temp->data << " ";
+
+		/*
+		   for preorder succesor and predecessor
+		*/
+		arr[cap] = temp->data;
+		cap++;
+
+
+		Preorder_Display(temp->left);
+		Preorder_Display(temp->right);
+
+
+	}
+
+}
+void preorder_predecessor_succesor(int val)
+{
+
+	for (int i = 0; i < cap; i++)
+	{
+		if (arr[i] == val)
+		{
+			if (i - 1 < 0)
+			{
+				cout << "there is no precessor " << endl;
+			}
+			else
+			{
+				cout << "Predecessor is " << arr[i - 1] << endl;
+			}
+		}
+	}
+	for (int j = 0; j < cap; j++)
+	{
+		if (arr[j] == val)
+		{
+			if (j + 1 >= cap)
+			{
+				cout << "there is no succesor " << endl;
+			}
+			else
+			{
+				cout << "successor is " << arr[j + 1] << endl;
+			}
+		}
+	}
+}
