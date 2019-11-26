@@ -36,10 +36,10 @@ void GST(Node *temp)
 	static int sum = 0;
 	if (temp != NULL)
 	{
-		GSM(temp->right);
+		GST(temp->right);
 		sum += temp->data;
 		cout << sum << " ";
-		GSM(temp->left);
+		GST(temp->left);
 	}
 	else
 	{
