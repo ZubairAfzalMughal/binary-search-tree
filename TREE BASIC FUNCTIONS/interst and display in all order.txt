@@ -1,4 +1,4 @@
-void BST::insert(int val) {
+void insert(int val) {
 
 	Node *mynode = new Node(val);
 	if (root == NULL) {
