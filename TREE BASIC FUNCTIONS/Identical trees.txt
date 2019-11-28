@@ -15,7 +15,7 @@
 			else
 			{
 				return 0;
-				exit(0); // as we found one nnde is not equal to other three node just finished the program
+				exit(0); // as we found one node is not equal to other three node just finished the program
 			}
 		}
 
@@ -26,9 +26,9 @@
      int i=indentical(root_1,root_2);
 	if (i == 1)
 	{
-		cout << "Tree is balanced \n";
+		cout << "Trees are identical\n";
 	}
 	else
 	{
-		cout << "tree is not balanced \n";
+		cout << "tree are not identical \n";
 	}
