@@ -127,7 +127,7 @@ void Heap_Sort::HeapSort(int arr[], int size)
 		// Move current root to end 
 		swap(arr[j], arr[i]);
 
-		// call max heapify on the reduced heap 
+		// call min heapify function
 		Heapify(arr, j, i);
 	}
 }
